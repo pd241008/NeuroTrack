@@ -46,7 +46,8 @@ export async function POST(request: Request) {
 
     // 🔥 Send to FastAPI backend
     try {
-      await fetch("http://127.0.0.1:8000/receive-data", {
+      const backendUrl = process.env.BACKEND_API_URL || "http://127.0.0.1:8000";
+      await fetch(`${backendUrl}/receive-data`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
