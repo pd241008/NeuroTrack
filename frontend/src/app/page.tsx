@@ -62,7 +62,7 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-100 to-gray-400 bg-clip-text text-transparent mb-4">
-              Unlock Your Mind's Potential
+              Unlock Your Mind&apos;s Potential
             </h2>
             <p className="text-gray-400">Discover features designed to elevate your mental clarity.</p>
           </motion.div>
