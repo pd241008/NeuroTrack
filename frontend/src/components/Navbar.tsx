@@ -13,27 +13,33 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-gray-800/30 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl shadow-purple-900/20 flex items-center justify-between px-6 py-3">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl bg-black/20 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.4)] flex items-center justify-between px-8 py-4 transition-all duration-300">
       <Link
         href="/"
-        className="text-xl font-bold tracking-wide bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent hover:scale-105 transition-transform">
+        className="text-2xl font-black tracking-tighter bg-gradient-to-r from-white via-purple-300 to-fuchsia-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
         NeuroTrack
       </Link>
 
-      <ul className="hidden md:flex gap-8 text-sm tracking-wide">
+      <ul className="hidden md:flex gap-8 text-[15px] font-medium tracking-wide">
         {navItems.map((item) => (
           <motion.li
             key={item.name}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}>
+            whileHover={{ y: -2 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}>
             <Link
               href={item.href}
-              className={`${
+              className={`relative px-2 py-1 ${
                 pathname === item.href
-                  ? "text-purple-400 font-medium"
-                  : "text-gray-300 hover:text-purple-300"
-              } transition-colors`}>
+                  ? "text-white"
+                  : "text-gray-400 hover:text-purple-300"
+              } transition-colors duration-300 group`}>
               {item.name}
+              {pathname === item.href && (
+                <motion.div
+                  layoutId="navbar-indicator"
+                  className="absolute bottom-[-6px] left-0 w-full h-[2px] bg-purple-400 rounded-full"
+                />
+              )}
             </Link>
           </motion.li>
         ))}
@@ -41,7 +47,7 @@ export default function Navbar() {
 
       <Link
         href="/journal"
-        className="hidden md:block bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-xl text-sm font-semibold transition duration-300 shadow-lg shadow-purple-600/30">
+        className="hidden md:flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/10 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-lg hover:shadow-purple-500/20 backdrop-blur-md">
         Try Now
       </Link>
     </nav>
