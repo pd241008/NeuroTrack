@@ -30,10 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-gray-900 via-gray-950 to-black text-gray-100 selection:bg-purple-600/40 selection:text-white`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#030014] text-gray-100 selection:bg-purple-600/40 selection:text-white relative overflow-x-hidden`}>
+        {/* Ambient Globabl Glows */}
+        <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[150px] pointer-events-none -z-10" />
+        <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-900/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+
         <Navbar />
 
-        <main className="pt-20 min-h-screen">{children}</main>
+        <main className="pt-24 min-h-screen relative z-10">{children}</main>
       </body>
     </html>
   );
